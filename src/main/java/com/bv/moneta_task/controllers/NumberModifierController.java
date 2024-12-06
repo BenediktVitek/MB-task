@@ -21,6 +21,7 @@ public class NumberModifierController {
         try {
             return ResponseEntity.ok(numberModifierService.getResult(inputNumber));
         } catch (Exception e) {
+            e.printStackTrace();
             return ResponseEntity.status(400).body(String.format("Number %d cannot be modified", inputNumber));
         }
     }
