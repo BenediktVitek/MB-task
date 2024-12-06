@@ -24,10 +24,6 @@ public class NumberModifierServiceImpl implements NumberModifierService {
         long updatedNumber = getNumberByJoiningDigits(listOfNumbers);
         int numberOfEvenDigits = countEvenDigits(updatedNumber);
 
-        if(numberOfEvenDigits == 0) {
-            throw new RuntimeException();
-        }
-
         return updatedNumber / numberOfEvenDigits;
     }
 

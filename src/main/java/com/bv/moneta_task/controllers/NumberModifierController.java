@@ -17,7 +17,11 @@ public class NumberModifierController {
     NumberModifierService numberModifierService;
 
     @GetMapping("/modify")
-    public ResponseEntity<Long> modifyInput(@RequestParam("inputNumber") long inputNumber) {
-        return ResponseEntity.ok(numberModifierService.getResult(inputNumber));
+    public ResponseEntity<?> modifyInput(@RequestParam("inputNumber") long inputNumber) {
+        try {
+            return ResponseEntity.ok(numberModifierService.getResult(inputNumber));
+        } catch (Exception e) {
+            return ResponseEntity.status(400).body(String.format("Number %d cannot be modified", inputNumber));
+        }
     }
 }
